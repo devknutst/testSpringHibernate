@@ -1,0 +1,40 @@
+
+create table content
+(
+	content_id int auto_increment
+		primary key,
+	name varchar(120) null,
+	text varchar(120) null
+)
+;
+
+create table page
+(
+	id int auto_increment
+		primary key,
+	url varchar(120) null,
+	content_id int null,
+	constraint page___content
+		foreign key (content_id) references content (content_id)
+)
+;
+
+create index page___content
+	on page (content_id)
+;
+
+create table side
+(
+	id int auto_increment
+		primary key,
+	name varchar(120) null,
+	content_id int null,
+	constraint side___content
+		foreign key (content_id) references content (content_id)
+)
+;
+
+create index side___content
+	on side (content_id)
+;
+
